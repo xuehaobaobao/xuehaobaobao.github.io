@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>xuehaobaobao</title>
-  <subtitle>每天都进步一点点</subtitle>
+  <title>xuehaobaobao的博客</title>
+  <subtitle>每一个不曾起舞的日子，都是对生命的辜负。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-24T07:28:35.601Z</updated>
+  <updated>2017-08-24T11:02:22.920Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>X-NUCAN</title>
+    <link href="http://yoursite.com/2017/08/24/%E5%90%88%E5%A4%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4/"/>
+    <id>http://yoursite.com/2017/08/24/合天实验室/</id>
+    <published>2017-08-24T10:45:23.000Z</published>
+    <updated>2017-08-24T11:02:22.920Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天做了合天实验室X-NUCAN2016的几道题<br>00X1 捉迷藏<br>打开题目链接我们看到的是一片漆黑</p>
+<p>所以我们先改变页面背景颜色</p>
+<p>当我们点击index,可以看到某些奇怪的东西一闪而过。<br>好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天做了合天实验室X-NUCAN2016的几道题&lt;br&gt;00X1 捉迷藏&lt;br&gt;打开题目链接我们看到的是一片漆黑&lt;/p&gt;
+&lt;p&gt;所以我们先改变页面背景颜色&lt;/p&gt;
+&lt;p&gt;当我们点击index,可以看到某些奇怪的东西一闪而过。&lt;br&gt;好吧，实在太快没有办法截图，我们可以试试用
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>第一篇博客</title>
