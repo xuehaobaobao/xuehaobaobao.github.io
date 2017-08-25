@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-25T03:53:14.195Z</updated>
+  <updated>2017-08-25T12:32:40.461Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>XX</title>
+    <link href="http://yoursite.com/2017/08/25/XX/"/>
+    <id>http://yoursite.com/2017/08/25/XX/</id>
+    <published>2017-08-25T12:32:00.000Z</published>
+    <updated>2017-08-25T12:32:40.461Z</updated>
+    
+    <content type="html"><![CDATA[<p>dffddfgd</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;dffddfgd&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>合天实验室</title>
     <link href="http://yoursite.com/2017/08/25/%E5%90%88%E5%A4%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4-1/"/>
     <id>http://yoursite.com/2017/08/25/合天实验室-1/</id>
     <published>2017-08-25T03:51:47.000Z</published>
-    <updated>2017-08-25T03:53:14.195Z</updated>
+    <updated>2017-08-25T12:34:09.532Z</updated>
     
     <content type="html"><![CDATA[<p>关于合天实验室上X-NUCA 上的php 是最好的语言<br>首先我们分析代码<br>&lt;?php<br>show_source(<strong>FILE</strong>);<br>$v1=0;$v2=0;$v3=0;<br>$a=(array)json_decode(@$_GET[‘foo’]);//<br>if(is_array($a)){<br>    is_numeric(@$a[“bar1”])?die(“nope”):NULL;//从这里我们可以得出bar1不是一个纯数字的字符串<br>    if(@$a[“bar1”]){<br>        ($a[“bar1”]&gt;2016)?$v1=1:NULL;//在这里我们可以得出bar1要大于2016且要包含字母，我们可任意取值<br>            }<br>    if(is_array(@$a[“bar2”])){<br>        if(count($a[“bar2”])!==5 OR !is_array($a[“bar2”][0])) die(“nope”);//bar2 有五个数，且[bar2][0]是数组，so,我们可以很清楚的知道bar2=[[1],1,1,1,1]或[[1],[1],1,1,1]and so on.<br>        $pos = array_search(“nudt”, $a[“a2”]);<br>        $pos===false?die(“nope”):NULL;<br>        foreach($a[“bar2”] as $key=&gt;$val){<br>            $val===”nudt”?die(“nope”):NULL;<br>        }<br>        $v2=1;<br>    }<br>}<br>$c=@$_GET[‘cat’];<br>$d=@$_GET[‘dog’];<br>if(@$c[1]){<br>    if(!strcmp($c[1],$d) &amp;&amp; $c[1]!==$d){                //array和string进行strcmp比较的时候会返回一个null,所以cat[1]和dog一个是数组，一个是字符串<br>        eregi(“3|1|c”,$d.$c[0])?die(“nope”):NULL;//因为%00可以截断eregi这个函数，所以dog=%00，为字符串<br>        strpos(($c[0].$d), “htctf2016”)?$v3=1:NULL;  //strops 因为要返回查找到的字符的位置 ,所以cat[0]=any+htctf2016;<br>    }<br>}<br>if($v1 &amp;&amp; $v2 &amp;&amp; $v3){<br>    include “flag.php”;<br>    echo $flag;<br>}<br>?&gt;<br>最后要注意提交的格式<br>json_decode  要特别注意，字符串和变量名都要用””(或者%22).<br>show_source:使用PHP内置的语法高亮器所定义的颜色，<br>打印输出或者返回 filename 文件中语法高亮版本的代码。<br>array :新建一个数组<br>json_decode  ： 对 JSON 格式的字符串进行解码</p>
 <p>&lt;?php<br>$json = ‘{“a”:1,”b”:2,”c”:3,”d”:4,”e”:5}’;</p>
@@ -45,7 +65,7 @@
     <link href="http://yoursite.com/2017/08/24/%E5%90%88%E5%A4%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4/"/>
     <id>http://yoursite.com/2017/08/24/合天实验室/</id>
     <published>2017-08-24T10:45:23.000Z</published>
-    <updated>2017-08-25T11:02:33.542Z</updated>
+    <updated>2017-08-25T12:33:48.149Z</updated>
     
     <content type="html"><![CDATA[<p>今天做了合天实验室X-NUCAN2016的几道题<br>00X1 捉迷藏<br>打开题目链接我们看到的是一片漆黑</p>
 <p>所以我们先改变页面背景颜色</p>
@@ -68,7 +88,7 @@
     <link href="http://yoursite.com/2017/08/24/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2017/08/24/第一篇博客/</id>
     <published>2017-08-24T07:26:59.000Z</published>
-    <updated>2017-08-24T07:28:35.601Z</updated>
+    <updated>2017-08-25T12:33:30.095Z</updated>
     
     <content type="html"><![CDATA[<p>第一篇博客就这么简单，我就是想试试看能不能成功</p>
 ]]></content>
