@@ -1930,7 +1930,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4a22ff;
+  background: #062486;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3019,8 +3019,8 @@ hr {
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 * {
-  cursor: url("/1.5.ico"), auto !important;
+  cursor: url("/1.3.ico"), auto !important;
 }
 :active {
-  cursor: url("/1.5.ico"), auto !important;
+  cursor: url("/1.4.ico"), auto !important;
 }
