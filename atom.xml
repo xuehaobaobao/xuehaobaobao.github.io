@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-25T12:32:40.461Z</updated>
+  <updated>2017-08-25T12:34:09.532Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,26 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>XX</title>
-    <link href="http://yoursite.com/2017/08/25/XX/"/>
-    <id>http://yoursite.com/2017/08/25/XX/</id>
-    <published>2017-08-25T12:32:00.000Z</published>
-    <updated>2017-08-25T12:32:40.461Z</updated>
-    
-    <content type="html"><![CDATA[<p>dffddfgd</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;dffddfgd&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>合天实验室</title>
