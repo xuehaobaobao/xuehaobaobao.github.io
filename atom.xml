@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-24T11:02:22.920Z</updated>
+  <updated>2017-08-25T03:53:14.195Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>合天实验室</title>
+    <link href="http://yoursite.com/2017/08/25/%E5%90%88%E5%A4%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4-1/"/>
+    <id>http://yoursite.com/2017/08/25/合天实验室-1/</id>
+    <published>2017-08-25T03:51:47.000Z</published>
+    <updated>2017-08-25T03:53:14.195Z</updated>
+    
+    <content type="html"><![CDATA[<p>关于合天实验室上X-NUCA 上的php 是最好的语言<br>首先我们分析代码<br>&lt;?php<br>show_source(<strong>FILE</strong>);<br>$v1=0;$v2=0;$v3=0;<br>$a=(array)json_decode(@$_GET[‘foo’]);//<br>if(is_array($a)){<br>    is_numeric(@$a[“bar1”])?die(“nope”):NULL;//从这里我们可以得出bar1不是一个纯数字的字符串<br>    if(@$a[“bar1”]){<br>        ($a[“bar1”]&gt;2016)?$v1=1:NULL;//在这里我们可以得出bar1要大于2016且要包含字母，我们可任意取值<br>            }<br>    if(is_array(@$a[“bar2”])){<br>        if(count($a[“bar2”])!==5 OR !is_array($a[“bar2”][0])) die(“nope”);//bar2 有五个数，且[bar2][0]是数组，so,我们可以很清楚的知道bar2=[[1],1,1,1,1]或[[1],[1],1,1,1]and so on.<br>        $pos = array_search(“nudt”, $a[“a2”]);<br>        $pos===false?die(“nope”):NULL;<br>        foreach($a[“bar2”] as $key=&gt;$val){<br>            $val===”nudt”?die(“nope”):NULL;<br>        }<br>        $v2=1;<br>    }<br>}<br>$c=@$_GET[‘cat’];<br>$d=@$_GET[‘dog’];<br>if(@$c[1]){<br>    if(!strcmp($c[1],$d) &amp;&amp; $c[1]!==$d){                //array和string进行strcmp比较的时候会返回一个null,所以cat[1]和dog一个是数组，一个是字符串<br>        eregi(“3|1|c”,$d.$c[0])?die(“nope”):NULL;//因为%00可以截断eregi这个函数，所以dog=%00，为字符串<br>        strpos(($c[0].$d), “htctf2016”)?$v3=1:NULL;  //strops 因为要返回查找到的字符的位置 ,所以cat[0]=any+htctf2016;<br>    }<br>}<br>if($v1 &amp;&amp; $v2 &amp;&amp; $v3){<br>    include “flag.php”;<br>    echo $flag;<br>}<br>?&gt;<br>最后要注意提交的格式<br>json_decode  要特别注意，字符串和变量名都要用””(或者%22).<br>show_source:使用PHP内置的语法高亮器所定义的颜色，<br>打印输出或者返回 filename 文件中语法高亮版本的代码。<br>array :新建一个数组<br>json_decode  ： 对 JSON 格式的字符串进行解码</p>
+<p>&lt;?php<br>$json = ‘{“a”:1,”b”:2,”c”:3,”d”:4,”e”:5}’;</p>
+<p>var_dump(json_decode($json));<br>var_dump(json_decode($json, true));</p>
+<p>?&gt; </p>
+<p>is_array — 检测变量是否是数组<br>is_numeric — 检测变量是否为数字或数字字符串<br>像 C 语言一样，PHP 中也有三目运算符“?:”。它的运行机制如下：<br>　　(expr1)?(expr2):(expr3)<br>其中的 Expr1、Expr2 及 Expr3 均为表达式。<br>当表达式 Expr1 为真时则执行后边的 Expr2，反之则 执行 Expr3。<br>从分析中不难看出，三目运算符“?:”实际上也就是 if…else 的简化版。<br>count — 计算数组中的单元数目或对象中的属性个数<br>array_search — 在数组中搜索给定的值，如果成功则返回相应的键名<br>foreach 语法结构提供了遍历数组的简单方式<br>strcmp — 二进制安全字符串比较<br>如果 str1 小于 str2 返回 &lt; 0； 如果 str1 大于 str2 返回 &gt; 0；如果两者相等，返回 0。<br>array和string进行strcmp比较的时候会返回一个null<br>eregi — 不区分大小写的正则表达式匹配  %00可以截断eregi</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于合天实验室上X-NUCA 上的php 是最好的语言&lt;br&gt;首先我们分析代码&lt;br&gt;&amp;lt;?php&lt;br&gt;show_source(&lt;strong&gt;FILE&lt;/strong&gt;);&lt;br&gt;$v1=0;$v2=0;$v3=0;&lt;br&gt;$a=(array)json_decode
+    
+    </summary>
+    
+    
+      <category term="writeup" scheme="http://yoursite.com/tags/writeup/"/>
+    
+  </entry>
   
   <entry>
     <title>X-NUCAN</title>
