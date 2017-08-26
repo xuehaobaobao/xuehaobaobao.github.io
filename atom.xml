@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-25T12:34:09.532Z</updated>
+  <updated>2017-08-26T12:15:26.013Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php弱类型的应用</title>
+    <link href="http://yoursite.com/2017/08/26/php%E5%BC%B1%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2017/08/26/php弱类型的应用/</id>
+    <published>2017-08-26T11:10:39.000Z</published>
+    <updated>2017-08-26T12:15:26.013Z</updated>
+    
+    <content type="html"><![CDATA[<p>###php 弱类型的应用<br>尝试自己总结下关于PHP弱类型<br>首先先了解什么是弱类型<br>弱类型及没在强制进行类型转换之前，便可进行两种类型的比较<br>你可以任意地将变量赋值给其他类型的变量<br>同时变量也可以转换成任意地其他类型的数据<br>在两个变量不匹配的时候，PHP会自动地进行变量转换<br>因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题<br><a id="more"></a></p>
+<p>##(1)比较运算符”==”<br><em>PHP中”=”是指赋值  “==”是弱等于”===”是全等于<br>这里具体介绍的是弱等于<br>//原理：<br>/</em><br>  弱类型比较的时候<br>  编译器会把要比较的两个变量尽量转化为整形<br>  1==’01’<br>  ‘01’-&gt;01-&gt;1相等<br>  1==’1asd’<br>  ‘1asd’-&gt;1相等<br>  1==1.0<br>  1-&gt;1.0相等<br><em>/<br>举个小例子：<br>$a=1;     //这里的a等于数字1;<br>$b=’1’;   //这里的b等于字符1;<br>$a==$b;   //但是却可以说他们两个弱相等;<br>//得出结论：<br>/</em><br>两边都是字符串的情况：<br>    如果两边字符串都是纯数字构成（r’^\d+e\d+$’这种科学计数也包括）<br>    编译器会将字符串转化为数字并比比较<br>    如果只有一边是纯数字字符串，<br>    正常按照两个字符串处理<br>只有一边是字符串的情况：<br>    如果另一边是纯数字：<br>    字符串会当作数字处理，’0123asd’取其中数字部分，’asd’=0<br>    */<br>0E830400451993494058024219903391==0E462097431906509019562988736854==0C82885C50CF4AD6DC3651A5A5923C0E<br>//在这里我还想仔细的解释下关于后面一部分为什么相等，<br>因为第三个并不是纯数字字符串，所以应该按照字符串来处理，<br>所以第三个等于零。</p>
+<p>##(2)Hash比较<br>除了以上的这种方式之外在进行hash比较的时候也会存在问题。如下：</p>
+<p>“0e132456789”==”0e7124511451155” //true<br>“0e123456abc”==”0e1dddada” //false<br>“0e1abc”==”0”  //true</p>
+<p>在进行比较运算时，<br>如果遇到了0e\d+这种字符串，就会将这种字符串解析为科学计数法。<br>如果不满足0e\d+这种模式就不会相等。<br>在这里在对Hash进行一个简单的解释<br>Hash，一般翻译做“散列”，也有直接音译为“哈希”的，<br>就是把任意长度的输入（又叫做预映射， pre-image），<br>通过散列算法，变换成固定长度的输出，该输出就是散列值。<br>这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，<br>不同的输入可能会散列成相同的输出，所以不可能从散列值来唯一的确定输入值。<br>简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。</p>
+<p>##(3)十六进制转换<br>还存在一种十六进制余字符串进行比较运算时的问题。</p>
+<p>例子如下：</p>
+<p>“0x1e240”==”123456” //true<br>“0x1e240”==123456 //true<br>“0x1e240”==”1e240” //false</p>
+<p>当其中的一个字符串是0x开头的时候，<br>PHP会将此字符串解析成为十进制然后再进行比较，<br>0x1e240解析成为十进制就是123456，<br>所以与int类型和string类型的123456比较都是相等。</p>
+<p>##(4)类型转化<br>int 转 string: strval()函数。<br>string 转 int: intval()函数。<br>用我自己的话简单解释下intval函数:从左开始读数直到读到字母为止。然而我感觉这个很好理解。</p>
+<p>##(5)内置函数的参数的松散性<br>内置函数的松散性说的是，调用函数时给函数传递函数无法接受的参数类型。<br>(天呐，说的这么高大上，还不就是利用函数的bug,有的函数不支持哪种形式，<br>就把这种形式硬塞给它，让它出问题返回false,就可以达到你不可告人的目的，滑稽脸)。</p>
+<p>#md5()<br>PHP手册中的md5()函数的描述是string md5 ( string $str [, bool $raw_output = false ] )<br>md5()中的需要是一个string类型的参数。<br>但是当你传递一个array时，md5()不会报错，知识会无法正确地求出array的md5值，<br>这样就会导致任意2个array的md5值都会相等。</p>
+<p>#strcmp()<br>strcmp()函数在PHP官方手册中的描述是int strcmp ( string $str1 , string $str2 )<br>需要给strcmp()传递2个string类型的参数。如果str1小于str2,返回-1，相等返回0，否则返回1。<br>strcmp函数比较字符串的本质是将两个变量转换为ascii，然后进行减法运算，然后根据运算结果来决定返回值。<br>但是如果传进去的是数字，那么会返回null,在某种意义上null也就相当于false。</p>
+<p>#switch()<br>如果switch是数字类型的case的判断时，switch会将其中的参数转换为int类型。</p>
+<p>#in_array()<br>在PHP手册中，in_array()函数的解释是bool in_array ( mixed $needle , array $haystack [, bool $strict = FALSE ] ) ,<br>如果strict参数没有提供，那么in_array就会使用松散比较来判断$needle是否在$haystack中。<br>(好吧，根本理解不了，大概意思就是尽量匹配前面的数到后面，如果前面的是’abc’,<br>后面有一个0，那就把’abc’转换为0，使返回的值是true,哈哈，我太机智了)<br>array_search()与in_array()也是一样的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###php 弱类型的应用&lt;br&gt;尝试自己总结下关于PHP弱类型&lt;br&gt;首先先了解什么是弱类型&lt;br&gt;弱类型及没在强制进行类型转换之前，便可进行两种类型的比较&lt;br&gt;你可以任意地将变量赋值给其他类型的变量&lt;br&gt;同时变量也可以转换成任意地其他类型的数据&lt;br&gt;在两个变量不匹配的时候，PHP会自动地进行变量转换&lt;br&gt;因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题&lt;br&gt;
+    
+    </summary>
+    
+      <category term="php" scheme="http://yoursite.com/categories/php/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>合天实验室</title>
@@ -66,7 +101,7 @@
     <link href="http://yoursite.com/2017/08/24/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2017/08/24/第一篇博客/</id>
     <published>2017-08-24T07:26:59.000Z</published>
-    <updated>2017-08-25T12:33:30.095Z</updated>
+    <updated>2017-08-26T12:13:18.942Z</updated>
     
     <content type="html"><![CDATA[<p>第一篇博客就这么简单，我就是想试试看能不能成功</p>
 ]]></content>
