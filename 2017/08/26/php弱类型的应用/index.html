@@ -97,17 +97,17 @@
 
 
 
-<meta name="description" content="###php 弱类型的应用尝试自己总结下关于PHP弱类型首先先了解什么是弱类型弱类型及没在强制进行类型转换之前，便可进行两种类型的比较你可以任意地将变量赋值给其他类型的变量同时变量也可以转换成任意地其他类型的数据在两个变量不匹配的时候，PHP会自动地进行变量转换因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题">
+<meta name="description" content="php 弱类型的应用尝试自己总结下关于PHP弱类型首先先了解什么是弱类型弱类型及没在强制进行类型转换之前，便可进行两种类型的比较你可以任意地将变量赋值给其他类型的变量同时变量也可以转换成任意地其他类型的数据在两个变量不匹配的时候，PHP会自动地进行变量转换因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php弱类型的应用">
 <meta property="og:url" content="http://yoursite.com/2017/08/26/php弱类型的应用/index.html">
 <meta property="og:site_name" content="xuehaobaobao的博客">
-<meta property="og:description" content="###php 弱类型的应用尝试自己总结下关于PHP弱类型首先先了解什么是弱类型弱类型及没在强制进行类型转换之前，便可进行两种类型的比较你可以任意地将变量赋值给其他类型的变量同时变量也可以转换成任意地其他类型的数据在两个变量不匹配的时候，PHP会自动地进行变量转换因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题">
+<meta property="og:description" content="php 弱类型的应用尝试自己总结下关于PHP弱类型首先先了解什么是弱类型弱类型及没在强制进行类型转换之前，便可进行两种类型的比较你可以任意地将变量赋值给其他类型的变量同时变量也可以转换成任意地其他类型的数据在两个变量不匹配的时候，PHP会自动地进行变量转换因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-26T12:15:26.013Z">
+<meta property="og:updated_time" content="2017-08-28T11:45:02.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php弱类型的应用">
-<meta name="twitter:description" content="###php 弱类型的应用尝试自己总结下关于PHP弱类型首先先了解什么是弱类型弱类型及没在强制进行类型转换之前，便可进行两种类型的比较你可以任意地将变量赋值给其他类型的变量同时变量也可以转换成任意地其他类型的数据在两个变量不匹配的时候，PHP会自动地进行变量转换因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题">
+<meta name="twitter:description" content="php 弱类型的应用尝试自己总结下关于PHP弱类型首先先了解什么是弱类型弱类型及没在强制进行类型转换之前，便可进行两种类型的比较你可以任意地将变量赋值给其他类型的变量同时变量也可以转换成任意地其他类型的数据在两个变量不匹配的时候，PHP会自动地进行变量转换因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题">
 
 
 
@@ -387,8 +387,14 @@
       
 
       
-        <p>###php 弱类型的应用<br>尝试自己总结下关于PHP弱类型<br>首先先了解什么是弱类型<br>弱类型及没在强制进行类型转换之前，便可进行两种类型的比较<br>你可以任意地将变量赋值给其他类型的变量<br>同时变量也可以转换成任意地其他类型的数据<br>在两个变量不匹配的时候，PHP会自动地进行变量转换<br>因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题<br><a id="more"></a></p>
-<p>##(1)比较运算符”==”<br><em>PHP中”=”是指赋值  “==”是弱等于”===”是全等于<br>这里具体介绍的是弱等于<br>//原理：<br>/</em><br>  弱类型比较的时候<br>  编译器会把要比较的两个变量尽量转化为整形<br>  1==’01’<br>  ‘01’-&gt;01-&gt;1相等<br>  1==’1asd’<br>  ‘1asd’-&gt;1相等<br>  1==1.0<br>  1-&gt;1.0相等<br><em>/<br>举个小例子：<br>$a=1;     //这里的a等于数字1;<br>$b=’1’;   //这里的b等于字符1;<br>$a==$b;   //但是却可以说他们两个弱相等;<br>//得出结论：<br>/</em><br>两边都是字符串的情况：<br>    如果两边字符串都是纯数字构成（r’^\d+e\d+$’这种科学计数也包括）<br>    编译器会将字符串转化为数字并比比较<br>    如果只有一边是纯数字字符串，<br>    正常按照两个字符串处理<br>只有一边是字符串的情况：<br>    如果另一边是纯数字：<br>    字符串会当作数字处理，’0123asd’取其中数字部分，’asd’=0<br>    */<br>0E830400451993494058024219903391==0E462097431906509019562988736854==0C82885C50CF4AD6DC3651A5A5923C0E<br>//在这里我还想仔细的解释下关于后面一部分为什么相等，<br>因为第三个并不是纯数字字符串，所以应该按照字符串来处理，<br>所以第三个等于零。</p>
+        <h3 id="php-弱类型的应用"><a href="#php-弱类型的应用" class="headerlink" title="php 弱类型的应用"></a>php 弱类型的应用</h3><p>尝试自己总结下关于PHP弱类型<br>首先先了解什么是弱类型<br>弱类型及没在强制进行类型转换之前，便可进行两种类型的比较<br>你可以任意地将变量赋值给其他类型的变量<br>同时变量也可以转换成任意地其他类型的数据<br>在两个变量不匹配的时候，PHP会自动地进行变量转换<br>因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题<br><a id="more"></a></p>
+<p>##(1)比较运算符”==”<br><em>PHP中”=”是指赋值  “==”是弱等于”===”是全等于<br>这里具体介绍的是弱等于<br>//原理：<br>/</em><br>  <code>弱类型比较的时候
+  编译器会把要比较的两个变量尽量转化为整形
+  1==&#39;01&#39;
+  &#39;01&#39;-&gt;01-&gt;1相等
+  1==&#39;1asd&#39;
+  &#39;1asd&#39;-&gt;1相等
+  1==1.0</code><br>  1-&gt;1.0相等<br><em>/<br>举个小例子：<br>$a=1;     //这里的a等于数字1;<br>$b=’1’;   //这里的b等于字符1;<br>$a==$b;   //但是却可以说他们两个弱相等;<br>//得出结论：<br>/</em><br>两边都是字符串的情况：<br>    如果两边字符串都是纯数字构成（r’^\d+e\d+$’这种科学计数也包括）<br>    编译器会将字符串转化为数字并比比较<br>    如果只有一边是纯数字字符串，<br>    正常按照两个字符串处理<br>只有一边是字符串的情况：<br>    如果另一边是纯数字：<br>    字符串会当作数字处理，’0123asd’取其中数字部分，’asd’=0<br>    */<br>0E830400451993494058024219903391==0E462097431906509019562988736854==0C82885C50CF4AD6DC3651A5A5923C0E<br>//在这里我还想仔细的解释下关于后面一部分为什么相等，<br>因为第三个并不是纯数字字符串，所以应该按照字符串来处理，<br>所以第三个等于零。</p>
 <p>##(2)Hash比较<br>除了以上的这种方式之外在进行hash比较的时候也会存在问题。如下：</p>
 <p>“0e132456789”==”0e7124511451155” //true<br>“0e123456abc”==”0e1dddada” //false<br>“0e1abc”==”0”  //true</p>
 <p>在进行比较运算时，<br>如果遇到了0e\d+这种字符串，就会将这种字符串解析为科学计数法。<br>如果不满足0e\d+这种模式就不会相等。<br>在这里在对Hash进行一个简单的解释<br>Hash，一般翻译做“散列”，也有直接音译为“哈希”的，<br>就是把任意长度的输入（又叫做预映射， pre-image），<br>通过散列算法，变换成固定长度的输出，该输出就是散列值。<br>这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，<br>不同的输入可能会散列成相同的输出，所以不可能从散列值来唯一的确定输入值。<br>简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。</p>
@@ -490,8 +496,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/1.1.jpg"
@@ -575,6 +590,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#php-弱类型的应用"><span class="nav-number">1.</span> <span class="nav-text">php 弱类型的应用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
