@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-31T13:03:43.722Z</updated>
+  <updated>2017-09-16T08:02:58.920Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,45 +16,21 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>222</title>
-    <link href="http://yoursite.com/2017/08/31/222/"/>
-    <id>http://yoursite.com/2017/08/31/222/</id>
-    <published>2017-08-31T12:46:26.000Z</published>
-    <updated>2017-08-31T13:03:43.722Z</updated>
-    
-    <content type="html"><![CDATA[<p>好的教科书犯得上看见<br>的设计课程都是v空间dsjkdsjvk<br>dskvlksdvndskjvnkjsdn 快点开始vs的v<br>的思考v今年打算考虑买<br>都是v可是看到v可能是的快女<br>的是橘黄色的旅客了</p>
-<p>v都是v马克思的邻居们<br><a id="more"></a><br>kdsklvjdslkvlkdsv<br>sdvknklsdnvkldsnvk<br>sdvjmnlksdnvklsd<br>sdvjklsvjdslkdslkv<br>sdvkldsklvjdslkv<br>sdvkkldsvnkdslvksdl<br>觉得是v难道是v莫妮卡单卡v加快速度v你空间的什么，<br>的开始v你说的v能实现pdsksdvm,<br>dnsknvkldsvmlds;./ sdkvds,mvDV<br>sdvnlkdsvmlsdk<br>vkdskvsdvjkdsvj</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;好的教科书犯得上看见&lt;br&gt;的设计课程都是v空间dsjkdsjvk&lt;br&gt;dskvlksdvndskjvnkjsdn 快点开始vs的v&lt;br&gt;的思考v今年打算考虑买&lt;br&gt;都是v可是看到v可能是的快女&lt;br&gt;的是橘黄色的旅客了&lt;/p&gt;
-&lt;p&gt;v都是v马克思的邻居们&lt;br&gt;
-    
-    </summary>
-    
-      <category term="55" scheme="http://yoursite.com/categories/55/"/>
-    
-    
-      <category term="55" scheme="http://yoursite.com/tags/55/"/>
-    
-  </entry>
-  
-  <entry>
     <title>X-NUCA热身赛writeup</title>
     <link href="http://yoursite.com/2017/08/30/2017-8-30/"/>
     <id>http://yoursite.com/2017/08/30/2017-8-30/</id>
     <published>2017-08-30T08:12:24.000Z</published>
-    <updated>2017-08-30T09:02:48.493Z</updated>
+    <updated>2017-09-16T08:02:58.920Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="http://localhost:4000/2017/08/30/2017-8-30/#more" target="_blank" rel="external">X-NUCA热身赛writeup</a></p>
+    <content type="html"><![CDATA[<p>[X-NUCA热身赛writeup]</p>
 <h2 id="00x1捉迷藏"><a href="#00x1捉迷藏" class="headerlink" title="00x1捉迷藏"></a>00x1捉迷藏</h2><p>点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,<br>当我们点击index,可以看到某些奇怪的东西一闪而过。<br>好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.<br><a id="more"></a><br><img src="http://i.imgur.com/5ybNJD2.png" alt=""><br><img src="http://i.imgur.com/A0qGaaA.png" alt=""></p>
 <h2 id="00x2简单问答"><a href="#00x2简单问答" class="headerlink" title="00x2简单问答"></a>00x2简单问答</h2><p>我们发现提交的按钮并不能点击，好吧，上插件firebug,<br><img src="http://i.imgur.com/bw0rUS1.png" alt=""><br>把disabled改为abled,发现可以提交了，但是提交后发现提交的内容并不是我写的内容，<br>看来一定发生了我不知道的变化，好吧，再一次看源码<br><img src="http://i.imgur.com/oy4TBti.png" alt=""><br>天呐，竟然把我提交的2016，改成了2015，好吧，我们利用Burpsuite修改我们提交的信息<br><img src="http://i.imgur.com/QxQ8Il3.png" alt=""></p>
-]]></content>
+<h2 id="00x3后台后台后台"><a href="#00x3后台后台后台" class="headerlink" title="00x3后台后台后台"></a>00x3后台后台后台</h2><p>这道题我们点击按钮后发现一句话”Only Member with Admin rights is allow to enter “<br>这就是所谓的后台，通过修改页面的背景颜色，也并没有得到更多的有效信息，好吧，我们想到利用抓包<br>来修改一些信息，这里引入了一个全新的概念，cookie.<br>cookie （储存在用户本地终端上的数据）<br>Cookie，有时也用其复数形式 Cookies，指某些网站为了辨别用户身份、进行 session 跟踪而储存在用户本地终端上的数据（通常经过加密）。<br>我们通过Base64解密后发现这里的Member=Normal，根据提示我们将这里换成Admin经过Base64加密后的内容，<br>再将包发出去，便可以得到flag.<br><img src="http://i.imgur.com/P5gELYH.png" alt=""></p>
+<h2 id="00x4php是最好的语言"><a href="#00x4php是最好的语言" class="headerlink" title="00x4php是最好的语言"></a>00x4php是最好的语言</h2><h2 id="00x5login"><a href="#00x5login" class="headerlink" title="00x5login"></a>00x5login</h2>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://localhost:4000/2017/08/30/2017-8-30/#more&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;X-NUCA热身赛writeup&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;[X-NUCA热身赛writeup]&lt;/p&gt;
 &lt;h2 id=&quot;00x1捉迷藏&quot;&gt;&lt;a href=&quot;#00x1捉迷藏&quot; class=&quot;headerlink&quot; title=&quot;00x1捉迷藏&quot;&gt;&lt;/a&gt;00x1捉迷藏&lt;/h2&gt;&lt;p&gt;点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,&lt;br&gt;当我们点击index,可以看到某些奇怪的东西一闪而过。&lt;br&gt;好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.&lt;br&gt;
     
     </summary>
@@ -115,50 +91,83 @@
     <link href="http://yoursite.com/2017/08/26/php%E5%BC%B1%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8/"/>
     <id>http://yoursite.com/2017/08/26/php弱类型的应用/</id>
     <published>2017-08-26T11:10:39.000Z</published>
-    <updated>2017-08-28T11:47:46.842Z</updated>
+    <updated>2017-09-16T08:06:45.059Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="php-弱类型的应用"><a href="#php-弱类型的应用" class="headerlink" title="php 弱类型的应用"></a>php 弱类型的应用</h3><p>尝试自己总结下关于PHP弱类型<br>首先先了解什么是弱类型<br>弱类型及没在强制进行类型转换之前，便可进行两种类型的比较<br>你可以任意地将变量赋值给其他类型的变量<br>同时变量也可以转换成任意地其他类型的数据<br>在两个变量不匹配的时候，PHP会自动地进行变量转换<br>因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题<br><a id="more"></a></p>
-<p>##(1)比较运算符”==”<br><em>PHP中”=”是指赋值  “==”是弱等于”===”是全等于<br>这里具体介绍的是弱等于<br>//原理：<br>/</em><br>  <code>弱类型比较的时候
+    <content type="html"><![CDATA[<h1 id="php-弱类型的应用"><a href="#php-弱类型的应用" class="headerlink" title="php 弱类型的应用"></a>php 弱类型的应用</h1><p>尝试自己总结下关于PHP弱类型<br>首先先了解什么是弱类型<br>弱类型及没在强制进行类型转换之前，便可进行两种类型的比较<br>你可以任意地将变量赋值给其他类型的变量<br>同时变量也可以转换成任意地其他类型的数据<br>在两个变量不匹配的时候，PHP会自动地进行变量转换<br>因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题<br><a id="more"></a></p>
+<h2 id="1-比较运算符”-”"><a href="#1-比较运算符”-”" class="headerlink" title="(1)比较运算符”==”"></a>(1)比较运算符”==”</h2><p><em>PHP中”=”是指赋值  “==”是弱等于”===”是全等于<br>这里具体介绍的是弱等于<br>//原理：<br>/</em><br>  <code>弱类型比较的时候
   编译器会把要比较的两个变量尽量转化为整形
   1==&#39;01&#39;
   &#39;01&#39;-&gt;01-&gt;1相等
   1==&#39;1asd&#39;
   &#39;1asd&#39;-&gt;1相等
   1==1.0</code><br>  1-&gt;1.0相等<br><em>/<br>举个小例子：<br>$a=1;     //这里的a等于数字1;<br>$b=’1’;   //这里的b等于字符1;<br>$a==$b;   //但是却可以说他们两个弱相等;<br>//得出结论：<br>/</em><br>两边都是字符串的情况：<br>    如果两边字符串都是纯数字构成（r’^\d+e\d+$’这种科学计数也包括）<br>    编译器会将字符串转化为数字并比比较<br>    如果只有一边是纯数字字符串，<br>    正常按照两个字符串处理<br>只有一边是字符串的情况：<br>    如果另一边是纯数字：<br>    字符串会当作数字处理，’0123asd’取其中数字部分，’asd’=0<br>    */<br>0E830400451993494058024219903391==0E462097431906509019562988736854==0C82885C50CF4AD6DC3651A5A5923C0E<br>//在这里我还想仔细的解释下关于后面一部分为什么相等，<br>因为第三个并不是纯数字字符串，所以应该按照字符串来处理，<br>所以第三个等于零。</p>
-<p>##(2)Hash比较<br>除了以上的这种方式之外在进行hash比较的时候也会存在问题。如下：</p>
+<h2 id="2-Hash比较"><a href="#2-Hash比较" class="headerlink" title="(2)Hash比较"></a>(2)Hash比较</h2><p>除了以上的这种方式之外在进行hash比较的时候也会存在问题。如下：</p>
 <p>“0e132456789”==”0e7124511451155” //true<br>“0e123456abc”==”0e1dddada” //false<br>“0e1abc”==”0”  //true</p>
 <p>在进行比较运算时，<br>如果遇到了0e\d+这种字符串，就会将这种字符串解析为科学计数法。<br>如果不满足0e\d+这种模式就不会相等。<br>在这里在对Hash进行一个简单的解释<br>Hash，一般翻译做“散列”，也有直接音译为“哈希”的，<br>就是把任意长度的输入（又叫做预映射， pre-image），<br>通过散列算法，变换成固定长度的输出，该输出就是散列值。<br>这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，<br>不同的输入可能会散列成相同的输出，所以不可能从散列值来唯一的确定输入值。<br>简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。</p>
-<p>##(3)十六进制转换<br>还存在一种十六进制余字符串进行比较运算时的问题。</p>
+<h2 id="3-十六进制转换"><a href="#3-十六进制转换" class="headerlink" title="(3)十六进制转换"></a>(3)十六进制转换</h2><p>还存在一种十六进制余字符串进行比较运算时的问题。</p>
 <p>例子如下：</p>
 <p>“0x1e240”==”123456” //true<br>“0x1e240”==123456 //true<br>“0x1e240”==”1e240” //false</p>
 <p>当其中的一个字符串是0x开头的时候，<br>PHP会将此字符串解析成为十进制然后再进行比较，<br>0x1e240解析成为十进制就是123456，<br>所以与int类型和string类型的123456比较都是相等。</p>
-<p>##(4)类型转化<br>int 转 string: strval()函数。<br>string 转 int: intval()函数。<br>用我自己的话简单解释下intval函数:从左开始读数直到读到字母为止。然而我感觉这个很好理解。</p>
-<p>##(5)内置函数的参数的松散性<br>内置函数的松散性说的是，调用函数时给函数传递函数无法接受的参数类型。<br>(天呐，说的这么高大上，还不就是利用函数的bug,有的函数不支持哪种形式，<br>就把这种形式硬塞给它，让它出问题返回false,就可以达到你不可告人的目的，滑稽脸)。</p>
-<p>#md5()<br>PHP手册中的md5()函数的描述是string md5 ( string $str [, bool $raw_output = false ] )<br>md5()中的需要是一个string类型的参数。<br>但是当你传递一个array时，md5()不会报错，知识会无法正确地求出array的md5值，<br>这样就会导致任意2个array的md5值都会相等。</p>
-<p>#strcmp()<br>strcmp()函数在PHP官方手册中的描述是int strcmp ( string $str1 , string $str2 )<br>需要给strcmp()传递2个string类型的参数。如果str1小于str2,返回-1，相等返回0，否则返回1。<br>strcmp函数比较字符串的本质是将两个变量转换为ascii，然后进行减法运算，然后根据运算结果来决定返回值。<br>但是如果传进去的是数字，那么会返回null,在某种意义上null也就相当于false。</p>
-<p>#switch()<br>如果switch是数字类型的case的判断时，switch会将其中的参数转换为int类型。</p>
-<p>#in_array()<br>在PHP手册中，in_array()函数的解释是bool in_array ( mixed $needle , array $haystack [, bool $strict = FALSE ] ) ,<br>如果strict参数没有提供，那么in_array就会使用松散比较来判断$needle是否在$haystack中。<br>(好吧，根本理解不了，大概意思就是尽量匹配前面的数到后面，如果前面的是’abc’,<br>后面有一个0，那就把’abc’转换为0，使返回的值是true,哈哈，我太机智了)<br>array_search()与in_array()也是一样的。</p>
+<h2 id="4-类型转化"><a href="#4-类型转化" class="headerlink" title="(4)类型转化"></a>(4)类型转化</h2><p>int 转 string: strval()函数。<br>string 转 int: intval()函数。<br>用我自己的话简单解释下intval函数:从左开始读数直到读到字母为止。然而我感觉这个很好理解。</p>
+<h2 id="5-内置函数的参数的松散性"><a href="#5-内置函数的参数的松散性" class="headerlink" title="(5)内置函数的参数的松散性"></a>(5)内置函数的参数的松散性</h2><p>内置函数的松散性说的是，调用函数时给函数传递函数无法接受的参数类型。<br>(天呐，说的这么高大上，还不就是利用函数的bug,有的函数不支持哪种形式，<br>就把这种形式硬塞给它，让它出问题返回false,就可以达到你不可告人的目的，滑稽脸)。</p>
+<h3 id="md5"><a href="#md5" class="headerlink" title="md5()"></a>md5()</h3><p>PHP手册中的md5()函数的描述是string md5 ( string $str [, bool $raw_output = false ] )<br>md5()中的需要是一个string类型的参数。<br>但是当你传递一个array时，md5()不会报错，知识会无法正确地求出array的md5值，<br>这样就会导致任意2个array的md5值都会相等。</p>
+<h3 id="strcmp"><a href="#strcmp" class="headerlink" title="strcmp()"></a>strcmp()</h3><p>strcmp()函数在PHP官方手册中的描述是int strcmp ( string $str1 , string $str2 )<br>需要给strcmp()传递2个string类型的参数。如果str1小于str2,返回-1，相等返回0，否则返回1。<br>strcmp函数比较字符串的本质是将两个变量转换为ascii，然后进行减法运算，然后根据运算结果来决定返回值。<br>但是如果传进去的是数字，那么会返回null,在某种意义上null也就相当于false。</p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch()"></a>switch()</h3><p>如果switch是数字类型的case的判断时，switch会将其中的参数转换为int类型。</p>
+<h3 id="in-array"><a href="#in-array" class="headerlink" title="in_array()"></a>in_array()</h3><p>在PHP手册中，in_array()函数的解释是bool in_array ( mixed $needle , array $haystack [, bool $strict = FALSE ] ) ,<br>如果strict参数没有提供，那么in_array就会使用松散比较来判断$needle是否在$haystack中。<br>(好吧，根本理解不了，大概意思就是尽量匹配前面的数到后面，如果前面的是’abc’,<br>后面有一个0，那就把’abc’转换为0，使返回的值是true,哈哈，我太机智了)<br>array_search()与in_array()也是一样的。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;php-弱类型的应用&quot;&gt;&lt;a href=&quot;#php-弱类型的应用&quot; class=&quot;headerlink&quot; title=&quot;php 弱类型的应用&quot;&gt;&lt;/a&gt;php 弱类型的应用&lt;/h3&gt;&lt;p&gt;尝试自己总结下关于PHP弱类型&lt;br&gt;首先先了解什么是弱类型&lt;br&gt;弱类型及没在强制进行类型转换之前，便可进行两种类型的比较&lt;br&gt;你可以任意地将变量赋值给其他类型的变量&lt;br&gt;同时变量也可以转换成任意地其他类型的数据&lt;br&gt;在两个变量不匹配的时候，PHP会自动地进行变量转换&lt;br&gt;因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题&lt;br&gt;
+      &lt;h1 id=&quot;php-弱类型的应用&quot;&gt;&lt;a href=&quot;#php-弱类型的应用&quot; class=&quot;headerlink&quot; title=&quot;php 弱类型的应用&quot;&gt;&lt;/a&gt;php 弱类型的应用&lt;/h1&gt;&lt;p&gt;尝试自己总结下关于PHP弱类型&lt;br&gt;首先先了解什么是弱类型&lt;br&gt;弱类型及没在强制进行类型转换之前，便可进行两种类型的比较&lt;br&gt;你可以任意地将变量赋值给其他类型的变量&lt;br&gt;同时变量也可以转换成任意地其他类型的数据&lt;br&gt;在两个变量不匹配的时候，PHP会自动地进行变量转换&lt;br&gt;因为PHP弱类型，所以在进行类型转换的时候就会出现各种问题&lt;br&gt;
     
     </summary>
     
       <category term="php" scheme="http://yoursite.com/categories/php/"/>
     
     
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
   </entry>
   
   <entry>
-    <title>hha</title>
+    <title>php 是最好的语言</title>
     <link href="http://yoursite.com/2017/08/25/%E5%90%88%E5%A4%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4-1/"/>
     <id>http://yoursite.com/2017/08/25/合天实验室-1/</id>
     <published>2017-08-25T03:51:47.000Z</published>
-    <updated>2017-08-30T08:16:14.969Z</updated>
+    <updated>2017-09-16T08:08:07.070Z</updated>
     
-    <content type="html"><![CDATA[<p>关于合天实验室上X-NUCA 上的php 是最好的语言<br><a id="more"></a><br>首先我们分析代码<br>&lt;?php<br>show_source(<strong>FILE</strong>);<br>$v1=0;$v2=0;$v3=0;<br>$a=(array)json_decode(@$_GET[‘foo’]);//<br>if(is_array($a)){<br>    is_numeric(@$a[“bar1”])?die(“nope”):NULL;//从这里我们可以得出bar1不是一个纯数字的字符串<br>    if(@$a[“bar1”]){<br>        ($a[“bar1”]&gt;2016)?$v1=1:NULL;//在这里我们可以得出bar1要大于2016且要包含字母，我们可任意取值<br>            }<br>    if(is_array(@$a[“bar2”])){<br>        if(count($a[“bar2”])!==5 OR !is_array($a[“bar2”][0])) die(“nope”);//bar2 有五个数，且[bar2][0]是数组，so,我们可以很清楚的知道bar2=[[1],1,1,1,1]或[[1],[1],1,1,1]and so on.<br>        $pos = array_search(“nudt”, $a[“a2”]);<br>        $pos===false?die(“nope”):NULL;<br>        foreach($a[“bar2”] as $key=&gt;$val){<br>            $val===”nudt”?die(“nope”):NULL;<br>        }<br>        $v2=1;<br>    }<br>}<br>$c=@$_GET[‘cat’];<br>$d=@$_GET[‘dog’];<br>if(@$c[1]){<br>    if(!strcmp($c[1],$d) &amp;&amp; $c[1]!==$d){                //array和string进行strcmp比较的时候会返回一个null,所以cat[1]和dog一个是数组，一个是字符串<br>        eregi(“3|1|c”,$d.$c[0])?die(“nope”):NULL;//因为%00可以截断eregi这个函数，所以dog=%00，为字符串<br>        strpos(($c[0].$d), “htctf2016”)?$v3=1:NULL;  //strops 因为要返回查找到的字符的位置 ,所以cat[0]=any+htctf2016;<br>    }<br>}<br>if($v1 &amp;&amp; $v2 &amp;&amp; $v3){<br>    include “flag.php”;<br>    echo $flag;<br>}<br>?&gt;<br>最后要注意提交的格式<br>json_decode  要特别注意，字符串和变量名都要用””(或者%22).<br>show_source:使用PHP内置的语法高亮器所定义的颜色，<br>打印输出或者返回 filename 文件中语法高亮版本的代码。<br>array :新建一个数组<br>json_decode  ： 对 JSON 格式的字符串进行解码</p>
+    <content type="html"><![CDATA[<p>关于合天实验室上X-NUCA 上的php 是最好的语言<br><a id="more"></a><br>首先我们分析代码<br><code>&lt;?php
+show_source(__FILE__);     
+$v1=0;$v2=0;$v3=0;
+$a=(array)json_decode(@$_GET[&#39;foo&#39;]);//
+if(is_array($a)){
+    is_numeric(@$a[&quot;bar1&quot;])?die(&quot;nope&quot;):NULL;//从这里我们可以得出bar1不是一个纯数字的字符串
+    if(@$a[&quot;bar1&quot;]){
+        ($a[&quot;bar1&quot;]&gt;2016)?$v1=1:NULL;//在这里我们可以得出bar1要大于2016且要包含字母，我们可任意取值
+            }
+    if(is_array(@$a[&quot;bar2&quot;])){
+        if(count($a[&quot;bar2&quot;])!==5 OR !is_array($a[&quot;bar2&quot;][0])) die(&quot;nope&quot;);//bar2 有五个数，且[bar2][0]是数组，so,我们可以很清楚的知道bar2=[[1],1,1,1,1]或[[1],[1],1,1,1]and so on.
+        $pos = array_search(&quot;nudt&quot;, $a[&quot;a2&quot;]);
+        $pos===false?die(&quot;nope&quot;):NULL;
+        foreach($a[&quot;bar2&quot;] as $key=&gt;$val){
+            $val===&quot;nudt&quot;?die(&quot;nope&quot;):NULL;
+        }
+        $v2=1;
+    }
+}
+$c=@$_GET[&#39;cat&#39;];
+$d=@$_GET[&#39;dog&#39;];
+if(@$c[1]){
+    if(!strcmp($c[1],$d) &amp;&amp; $c[1]!==$d){                //array和string进行strcmp比较的时候会返回一个null,所以cat[1]和dog一个是数组，一个是字符串
+        eregi(&quot;3|1|c&quot;,$d.$c[0])?die(&quot;nope&quot;):NULL;//因为%00可以截断eregi这个函数，所以dog=%00，为字符串
+        strpos(($c[0].$d), &quot;htctf2016&quot;)?$v3=1:NULL;  //strops 因为要返回查找到的字符的位置 ,所以cat[0]=any+htctf2016;
+    }
+}
+if($v1 &amp;&amp; $v2 &amp;&amp; $v3){
+    include &quot;flag.php&quot;;
+    echo $flag;
+}
+?&gt;</code><br>最后要注意提交的格式<br>json_decode  要特别注意，字符串和变量名都要用””(或者%22).<br>show_source:使用PHP内置的语法高亮器所定义的颜色，<br>打印输出或者返回 filename 文件中语法高亮版本的代码。<br>array :新建一个数组<br>json_decode  ： 对 JSON 格式的字符串进行解码</p>
 <p>&lt;?php<br>$json = ‘{“a”:1,”b”:2,”c”:3,”d”:4,”e”:5}’;</p>
 <p>var_dump(json_decode($json));<br>var_dump(json_decode($json, true));</p>
 <p>?&gt; </p>

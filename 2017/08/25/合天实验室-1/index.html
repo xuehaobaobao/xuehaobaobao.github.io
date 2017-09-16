@@ -109,14 +109,14 @@
 <meta name="description" content="关于合天实验室上X-NUCA 上的php 是最好的语言">
 <meta name="keywords" content="writeup">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hha">
+<meta property="og:title" content="php 是最好的语言">
 <meta property="og:url" content="http://yoursite.com/2017/08/25/合天实验室-1/index.html">
 <meta property="og:site_name" content="xuehaobaobao的博客">
 <meta property="og:description" content="关于合天实验室上X-NUCA 上的php 是最好的语言">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-30T08:16:14.969Z">
+<meta property="og:updated_time" content="2017-09-16T08:08:07.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hha">
+<meta name="twitter:title" content="php 是最好的语言">
 <meta name="twitter:description" content="关于合天实验室上X-NUCA 上的php 是最好的语言">
 
 
@@ -153,7 +153,7 @@
 
 
 
-  <title>hha | xuehaobaobao的博客</title>
+  <title>php 是最好的语言 | xuehaobaobao的博客</title>
   
 
 
@@ -307,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hha</h1>
+          <h1 class="post-title" itemprop="name headline">php 是最好的语言</h1>
         
 
         <div class="post-meta">
@@ -388,7 +388,38 @@
       
 
       
-        <p>关于合天实验室上X-NUCA 上的php 是最好的语言<br><a id="more"></a><br>首先我们分析代码<br>&lt;?php<br>show_source(<strong>FILE</strong>);<br>$v1=0;$v2=0;$v3=0;<br>$a=(array)json_decode(@$_GET[‘foo’]);//<br>if(is_array($a)){<br>    is_numeric(@$a[“bar1”])?die(“nope”):NULL;//从这里我们可以得出bar1不是一个纯数字的字符串<br>    if(@$a[“bar1”]){<br>        ($a[“bar1”]&gt;2016)?$v1=1:NULL;//在这里我们可以得出bar1要大于2016且要包含字母，我们可任意取值<br>            }<br>    if(is_array(@$a[“bar2”])){<br>        if(count($a[“bar2”])!==5 OR !is_array($a[“bar2”][0])) die(“nope”);//bar2 有五个数，且[bar2][0]是数组，so,我们可以很清楚的知道bar2=[[1],1,1,1,1]或[[1],[1],1,1,1]and so on.<br>        $pos = array_search(“nudt”, $a[“a2”]);<br>        $pos===false?die(“nope”):NULL;<br>        foreach($a[“bar2”] as $key=&gt;$val){<br>            $val===”nudt”?die(“nope”):NULL;<br>        }<br>        $v2=1;<br>    }<br>}<br>$c=@$_GET[‘cat’];<br>$d=@$_GET[‘dog’];<br>if(@$c[1]){<br>    if(!strcmp($c[1],$d) &amp;&amp; $c[1]!==$d){                //array和string进行strcmp比较的时候会返回一个null,所以cat[1]和dog一个是数组，一个是字符串<br>        eregi(“3|1|c”,$d.$c[0])?die(“nope”):NULL;//因为%00可以截断eregi这个函数，所以dog=%00，为字符串<br>        strpos(($c[0].$d), “htctf2016”)?$v3=1:NULL;  //strops 因为要返回查找到的字符的位置 ,所以cat[0]=any+htctf2016;<br>    }<br>}<br>if($v1 &amp;&amp; $v2 &amp;&amp; $v3){<br>    include “flag.php”;<br>    echo $flag;<br>}<br>?&gt;<br>最后要注意提交的格式<br>json_decode  要特别注意，字符串和变量名都要用””(或者%22).<br>show_source:使用PHP内置的语法高亮器所定义的颜色，<br>打印输出或者返回 filename 文件中语法高亮版本的代码。<br>array :新建一个数组<br>json_decode  ： 对 JSON 格式的字符串进行解码</p>
+        <p>关于合天实验室上X-NUCA 上的php 是最好的语言<br><a id="more"></a><br>首先我们分析代码<br><code>&lt;?php
+show_source(__FILE__);     
+$v1=0;$v2=0;$v3=0;
+$a=(array)json_decode(@$_GET[&#39;foo&#39;]);//
+if(is_array($a)){
+    is_numeric(@$a[&quot;bar1&quot;])?die(&quot;nope&quot;):NULL;//从这里我们可以得出bar1不是一个纯数字的字符串
+    if(@$a[&quot;bar1&quot;]){
+        ($a[&quot;bar1&quot;]&gt;2016)?$v1=1:NULL;//在这里我们可以得出bar1要大于2016且要包含字母，我们可任意取值
+            }
+    if(is_array(@$a[&quot;bar2&quot;])){
+        if(count($a[&quot;bar2&quot;])!==5 OR !is_array($a[&quot;bar2&quot;][0])) die(&quot;nope&quot;);//bar2 有五个数，且[bar2][0]是数组，so,我们可以很清楚的知道bar2=[[1],1,1,1,1]或[[1],[1],1,1,1]and so on.
+        $pos = array_search(&quot;nudt&quot;, $a[&quot;a2&quot;]);
+        $pos===false?die(&quot;nope&quot;):NULL;
+        foreach($a[&quot;bar2&quot;] as $key=&gt;$val){
+            $val===&quot;nudt&quot;?die(&quot;nope&quot;):NULL;
+        }
+        $v2=1;
+    }
+}
+$c=@$_GET[&#39;cat&#39;];
+$d=@$_GET[&#39;dog&#39;];
+if(@$c[1]){
+    if(!strcmp($c[1],$d) &amp;&amp; $c[1]!==$d){                //array和string进行strcmp比较的时候会返回一个null,所以cat[1]和dog一个是数组，一个是字符串
+        eregi(&quot;3|1|c&quot;,$d.$c[0])?die(&quot;nope&quot;):NULL;//因为%00可以截断eregi这个函数，所以dog=%00，为字符串
+        strpos(($c[0].$d), &quot;htctf2016&quot;)?$v3=1:NULL;  //strops 因为要返回查找到的字符的位置 ,所以cat[0]=any+htctf2016;
+    }
+}
+if($v1 &amp;&amp; $v2 &amp;&amp; $v3){
+    include &quot;flag.php&quot;;
+    echo $flag;
+}
+?&gt;</code><br>最后要注意提交的格式<br>json_decode  要特别注意，字符串和变量名都要用””(或者%22).<br>show_source:使用PHP内置的语法高亮器所定义的颜色，<br>打印输出或者返回 filename 文件中语法高亮版本的代码。<br>array :新建一个数组<br>json_decode  ： 对 JSON 格式的字符串进行解码</p>
 <p>&lt;?php<br>$json = ‘{“a”:1,”b”:2,”c”:3,”d”:4,”e”:5}’;</p>
 <p>var_dump(json_decode($json));<br>var_dump(json_decode($json, true));</p>
 <p>?&gt; </p>
@@ -505,7 +536,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -516,7 +547,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>

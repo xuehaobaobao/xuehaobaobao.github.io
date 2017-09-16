@@ -106,23 +106,24 @@
 
 
 
-<meta name="description" content="X-NUCA热身赛writeup 00x1捉迷藏点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,当我们点击index,可以看到某些奇怪的东西一闪而过。好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.">
+<meta name="description" content="[X-NUCA热身赛writeup] 00x1捉迷藏点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,当我们点击index,可以看到某些奇怪的东西一闪而过。好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.">
 <meta name="keywords" content="Writeup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="X-NUCA热身赛writeup">
 <meta property="og:url" content="http://yoursite.com/2017/08/30/2017-8-30/index.html">
 <meta property="og:site_name" content="xuehaobaobao的博客">
-<meta property="og:description" content="X-NUCA热身赛writeup 00x1捉迷藏点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,当我们点击index,可以看到某些奇怪的东西一闪而过。好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.">
+<meta property="og:description" content="[X-NUCA热身赛writeup] 00x1捉迷藏点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,当我们点击index,可以看到某些奇怪的东西一闪而过。好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i.imgur.com/5ybNJD2.png">
 <meta property="og:image" content="http://i.imgur.com/A0qGaaA.png">
 <meta property="og:image" content="http://i.imgur.com/bw0rUS1.png">
 <meta property="og:image" content="http://i.imgur.com/oy4TBti.png">
 <meta property="og:image" content="http://i.imgur.com/QxQ8Il3.png">
-<meta property="og:updated_time" content="2017-08-30T09:02:48.493Z">
+<meta property="og:image" content="http://i.imgur.com/P5gELYH.png">
+<meta property="og:updated_time" content="2017-09-16T08:02:58.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="X-NUCA热身赛writeup">
-<meta name="twitter:description" content="X-NUCA热身赛writeup 00x1捉迷藏点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,当我们点击index,可以看到某些奇怪的东西一闪而过。好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.">
+<meta name="twitter:description" content="[X-NUCA热身赛writeup] 00x1捉迷藏点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,当我们点击index,可以看到某些奇怪的东西一闪而过。好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.">
 <meta name="twitter:image" content="http://i.imgur.com/5ybNJD2.png">
 
 
@@ -357,7 +358,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  201
+                  411
                 </span>
               
 
@@ -394,10 +395,11 @@
       
 
       
-        <p><a href="http://localhost:4000/2017/08/30/2017-8-30/#more" target="_blank" rel="external">X-NUCA热身赛writeup</a></p>
+        <p>[X-NUCA热身赛writeup]</p>
 <h2 id="00x1捉迷藏"><a href="#00x1捉迷藏" class="headerlink" title="00x1捉迷藏"></a>00x1捉迷藏</h2><p>点击链接发现一片漆黑，我们利用火狐的插件firebug修改背景颜色,<br>当我们点击index,可以看到某些奇怪的东西一闪而过。<br>好吧，实在太快没有办法截图，我们可以试试用Burpsuite 这样的代理工具来进行拦截即可获得flag.<br><a id="more"></a><br><img src="http://i.imgur.com/5ybNJD2.png" alt=""><br><img src="http://i.imgur.com/A0qGaaA.png" alt=""></p>
 <h2 id="00x2简单问答"><a href="#00x2简单问答" class="headerlink" title="00x2简单问答"></a>00x2简单问答</h2><p>我们发现提交的按钮并不能点击，好吧，上插件firebug,<br><img src="http://i.imgur.com/bw0rUS1.png" alt=""><br>把disabled改为abled,发现可以提交了，但是提交后发现提交的内容并不是我写的内容，<br>看来一定发生了我不知道的变化，好吧，再一次看源码<br><img src="http://i.imgur.com/oy4TBti.png" alt=""><br>天呐，竟然把我提交的2016，改成了2015，好吧，我们利用Burpsuite修改我们提交的信息<br><img src="http://i.imgur.com/QxQ8Il3.png" alt=""></p>
-
+<h2 id="00x3后台后台后台"><a href="#00x3后台后台后台" class="headerlink" title="00x3后台后台后台"></a>00x3后台后台后台</h2><p>这道题我们点击按钮后发现一句话”Only Member with Admin rights is allow to enter “<br>这就是所谓的后台，通过修改页面的背景颜色，也并没有得到更多的有效信息，好吧，我们想到利用抓包<br>来修改一些信息，这里引入了一个全新的概念，cookie.<br>cookie （储存在用户本地终端上的数据）<br>Cookie，有时也用其复数形式 Cookies，指某些网站为了辨别用户身份、进行 session 跟踪而储存在用户本地终端上的数据（通常经过加密）。<br>我们通过Base64解密后发现这里的Member=Normal，根据提示我们将这里换成Admin经过Base64加密后的内容，<br>再将包发出去，便可以得到flag.<br><img src="http://i.imgur.com/P5gELYH.png" alt=""></p>
+<h2 id="00x4php是最好的语言"><a href="#00x4php是最好的语言" class="headerlink" title="00x4php是最好的语言"></a>00x4php是最好的语言</h2><h2 id="00x5login"><a href="#00x5login" class="headerlink" title="00x5login"></a>00x5login</h2>
       
     </div>
     
@@ -436,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/31/222/" rel="prev" title="222">
-                222 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -518,7 +516,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -529,7 +527,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -595,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#00x1捉迷藏"><span class="nav-number">1.</span> <span class="nav-text">00x1捉迷藏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#00x2简单问答"><span class="nav-number">2.</span> <span class="nav-text">00x2简单问答</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#00x1捉迷藏"><span class="nav-number">1.</span> <span class="nav-text">00x1捉迷藏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#00x2简单问答"><span class="nav-number">2.</span> <span class="nav-text">00x2简单问答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#00x3后台后台后台"><span class="nav-number">3.</span> <span class="nav-text">00x3后台后台后台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#00x4php是最好的语言"><span class="nav-number">4.</span> <span class="nav-text">00x4php是最好的语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#00x5login"><span class="nav-number">5.</span> <span class="nav-text">00x5login</span></a></li></ol></div>
             
 
           </div>
